@@ -1,0 +1,93 @@
+
+<html>
+<head>
+<title>setTimeout的練習1</title>
+</head>
+ 
+<body>
+ 
+<div id=t1 style="position:absolute;border-width:5;border-style:double;top:10;left:150;font-size:50px"></div>
+
+<div id='ai' style='position:absolute;top:x1;left:y1;width:3;height:3;background:red;font-size:1px'></div>
+ 
+<script language="javascript"> 
+ 
+function showtime(){
+ 
+time=new Date();
+secs=time.getSeconds();
+mins=time.getMinutes();
+hrs=time.getHours();
+year=time.getFullYear();
+month=time.getMonth()+1;
+day=time.getDate();
+ 
+document.getElementById('t1').innerHTML=(year+"/"+month+"/"+day+"---"+hrs+":"+mins+":"+secs);
+ 
+for(i=0;i<r;i+=15){
+    x3=x+i*Math.cos((secs/60*360-90)*(Math.PI/180));
+	y3=y+i*Math.sin((secs/60*360-90)*(Math.PI/180));
+	document.getElementById('a'+i).style.top=y3;
+	document.getElementById('a'+i).style.left=x3;
+}
+for(i=0;i<r-20;i+=15){
+    x2=x+i*Math.cos((mins/60*360-90)*(Math.PI/180));
+	y2=y+i*Math.sin((mins/60*360-90)*(Math.PI/180));
+	document.getElementById('b'+i).style.top=y2;
+	document.getElementById('b'+i).style.left=x2;
+}
+for(i=0;i<r-40;i+=15){
+    x1=x+i*Math.cos(((hrs %12)/12*360-90)*(Math.PI/180));
+	y1=y+i*Math.sin(((hrs %12)/12*360-90)*(Math.PI/180));
+	document.getElementById('c'+i).style.top=y1;
+	document.getElementById('c'+i).style.left=x1;
+}
+
+ 
+}
+ 
+ 
+/*
+圓形
+r：半徑
+radian = 角度*(Math.PI/180);
+x = r*Math.cos(radian);
+y = r*Math.sin(radian);
+*/
+ 
+var r = 100;
+var x=250,y=250;
+ 
+for(i=0;i<360;i+=30){
+    x1=x+r*Math.cos(i*(Math.PI/180));
+	y1=y+r*Math.sin(i*(Math.PI/180));
+	document.writeln("<div style='position:absolute;top:"+x1+";left:"+y1+";width:3;height:3;background:red;font-size:1px'></div>");
+}
+
+for(i=0;i<r;i+=15){
+    x3=x+i*Math.cos(180*(Math.PI/180));
+	y3=y+i*Math.sin(180*(Math.PI/180));
+	document.writeln("<div id='a"+i+"' style='position:absolute;top:"+x3+";left:"+y3+";width:3;height:3;background:red;font-size:1px'></div>");
+}
+for(i=0;i<r-20;i+=15){
+    x2=x+i*Math.cos(180*(Math.PI/180));
+	y2=y+i*Math.sin(180*(Math.PI/180));
+	document.writeln("<div id='b"+i+"' style='position:absolute;top:"+x2+";left:"+y2+";width:5;height:5;background:black;font-size:1px'></div>");
+}
+for(i=0;i<r-40;i+=15){
+    x1=x+i*Math.cos(180*(Math.PI/180));
+	y1=y+i*Math.sin(180*(Math.PI/180));
+	document.writeln("<div id='c"+i+"' style='position:absolute;top:"+x1+";left:"+y1+";width:7;height:7;background:black;font-size:1px'></div>");
+}
+ 
+ 
+ 
+ 
+run1 = window.setInterval("showtime()" , 1000);
+ 
+</script>
+
+ 
+</body>  
+  
+</html>
